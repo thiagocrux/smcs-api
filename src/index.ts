@@ -1,13 +1,12 @@
 import express, { Express } from 'express';
 import 'dotenv/config';
 
-const app: Express = express();
-const port = process.env.APP_PORT;
+import routes from './routes';
 
-app.get('/', (_req, res) => {
-  res.status(200).json('Hello, world!');
-});
+const app: Express = express();
+const port = process.env.API_PORT;
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
+  routes(app);
 });
